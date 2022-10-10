@@ -420,21 +420,19 @@ Ship = function () {
       this.delayBeforeBullet -= delta;
     }
     if (KEY_STATUS.space) {
-      if (this.delayBeforeBullet <= 0) {
-        for (var i = 0; i < this.bullets.length; i++) {
-          if (!this.bullets[i].visible) {
-            SFX.laser();
-            var bullet = this.bullets[i];
-            var rad = ((this.rot-90) * Math.PI)/180;
-            var vectorx = Math.cos(rad);
-            var vectory = Math.sin(rad);
-            // move to the nose of the ship
-            bullet.x = this.x + vectorx * 4;
-            bullet.y = this.y + vectory * 4;
-            bullet.vel.x = 6 * vectorx + this.vel.x;
-            bullet.vel.y = 6 * vectory + this.vel.y;
-            bullet.visible = true;
+      spaceCounter++;
+      if (spaceCounter > 5) {
+        spaceCounter = 0;
+        for (var i = 0; i < bullets.length; i++) {
+          if (!bullets[i].visible) {
+              var rad = ((ship.rot-90) * Math.PI)/180;
+            bullets[i].x = ship.x + vectorx * 4;
+            bullets[i].y = ship.y + vectory * 4;
+           bullets[i].vel.x = 6 * vectorx + ship.vel.x;
+            bullets[i].vel.y = 6 * vectory + ship.vel.y;
+            bullets[i].visible = true;
             break;
+
           }
         }
       }
