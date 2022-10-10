@@ -2,8 +2,6 @@
 //
 // Copyright (c) 2010 Doug McInnes
 //
-
-
 KEY_CODES = {
   32: '
 space',
